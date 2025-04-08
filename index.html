@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mandi - Fresh Vegetables Online</title>
+    <title>KisanSe - Fresh Vegetables Online</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <div class="logo">Mandi</div>
+        <div class="logo">KisanSe</div>
         <div class="location-selector">
             Location <i class="fas fa-chevron-down"></i>
         </div>
         <div class="search-container">
             <input type="text" placeholder="Search">
-            <button class="search-btn"><i class="fas fa-search"></i></button>
+           <a href="/search/search.html"> <button class="search-btn"><i class="fas fa-search"></i></button></a>
         </div>
         <div class="user-actions">
-            <a href="#" class="login-btn">Log In</a>
+            <a href="/login/login.html" class="login-btn">Log In</a>
             <a href="#" class="cart-btn" id="cartBtn">My Cart <span id="cartCount" class="cart-count">0</span></a>
         </div>
     </header>
@@ -30,7 +30,7 @@
         <div class="sidebar">
             <ul class="categories">
                 <li class="active"><a href="#">Fresh Vegetables</a></li>
-                <li><a href="freshfruit.html">Fresh Fruits</a></li>
+                <li><a href="/freshfruit.html">Fresh Fruits</a></li>
                 <li><a href="#">Mangoes & Melons</a></li>
                 <li><a href="#">Seasonal</a></li>
                 <li><a href="#">Exotics</a></li>
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="product-card" >
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png" alt="Potato" class="product-image">
+                    <img src="/images/potato.jpg" alt="Potato" class="product-image">
                     <h3>Potato(आलू)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="product-card" data-id="3" data-name="Mirchi" data-price="72" data-image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png" alt="Mirchi" class="product-image">
+                    <img src="/images/mirchi.jpg" alt="Mirchi" class="product-image">
                     <h3>Mirchi(मिर्ची)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
@@ -95,7 +95,7 @@
                 </div>
 
                 <div class="product-card" data-id="4" data-name="Tomato" data-price="72" data-image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png" alt="Tomato" class="product-image">
+                    <img src="/images/spinach.jpg" alt="Tomato" class="product-image">
                     <h3>Spinach(पालक)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="product-card" data-id="5" data-name="Lemon" data-price="72" data-image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png" alt="Lemon" class="product-image">
+                    <img src="/images/lemon.jpg" alt="Lemon" class="product-image">
                     <h3>Lemon(नींबू)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
@@ -128,14 +128,14 @@
 
                 <!-- Row 2 -->
                 <div class="product-card" data-id="6" data-name="Tomato" data-price="72" data-image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png" alt="Tomato" class="product-image">
+                    <img src="/images/tomato.jpg" alt="Tomato" class="product-image">
                     <h3>Tomato(टमाटर)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
                             <option>2Kg</option>
                             <option>5Kg</option>
-                        </select>
+                        </select>   
                         <div class="price-add">
                             <span class="price">₹19</span>
                             <button class="add-btn">ADD</button>
@@ -144,7 +144,7 @@
                 </div>
 
                 <div class="product-card" data-id="7" data-name="Carrot" data-price="72" data-image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png" alt="Carrot" class="product-image">
+                    <img src="/images/carrot.jpg" alt="Carrot" class="product-image">
                     <h3>Carrot(गाजर)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
@@ -159,8 +159,8 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-id="8" data-name="Cauliflower" data-price="72" data-image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png" alt="Cauliflower" class="product-image">
+                <div class="product-card" data-id="8" data-name="Cauliflower" data-price="72"   >
+                    <img src="/images/cauliflower.jpg" alt="Cauliflower" class="product-image">
                     <h3>Cauliflower(फूलगोभी)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
@@ -176,7 +176,7 @@
                 </div>
 
                 <div class="product-card" data-id="9" data-name="Ladyfinger" data-price="72" data-image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png" alt="Ladyfinger" class="product-image">
+                    <img src="/images/ladyfinger.jpg" alt="Ladyfinger" class="product-image">
                     <h3>Ladyfinger(भिंडी)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
@@ -192,7 +192,7 @@
                 </div>
 
                 <div class="product-card" data-id="10" data-name="Cucumber" data-price="72" data-image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-udFy01pTJ7vuRYRJlabrjf9DCx7ohM.png" alt="Cucumber" class="product-image">
+                    <img src="/images/kukumber.jpg" alt="Cucumber" class="product-image">
                     <h3>Cucumber(खीरा)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
