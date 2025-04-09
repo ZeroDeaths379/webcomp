@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KisanSe - Fresh Vegetables Online</title>
+    <title>Mandi - Fresh Vegetables Online</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Header Section -->
     <header>
-        <div class="logo">KisanSe</div>
+        <div class="logo">Mandi</div>
         <div class="location-selector">
             Location <i class="fas fa-chevron-down"></i>
         </div>
         <div class="search-container">
-            <input type="text" placeholder="Search">
-           <a href="/search/search.html"> <button class="search-btn"><i class="fas fa-search"></i></button></a>
+            <input type="text" placeholder="Search" id="searchInput" readonly>
+            <button class="search-btn"><i class="fas fa-search"></i></button>
         </div>
         <div class="user-actions">
-            <a href="/login/login.html" class="login-btn">Log In</a>
+            <a href="#" class="login-btn" id="loginBtn">Log In</a>
             <a href="#" class="cart-btn" id="cartBtn">My Cart <span id="cartCount" class="cart-count">0</span></a>
         </div>
     </header>
@@ -30,7 +30,7 @@
         <div class="sidebar">
             <ul class="categories">
                 <li class="active"><a href="#">Fresh Vegetables</a></li>
-                <li><a href="/freshfruit.html">Fresh Fruits</a></li>
+                <li><a href="#">Fresh Fruits</a></li>
                 <li><a href="#">Mangoes & Melons</a></li>
                 <li><a href="#">Seasonal</a></li>
                 <li><a href="#">Exotics</a></li>
@@ -46,9 +46,9 @@
             
             <div class="products-grid">
                 <!-- Row 1 -->
-                <div class="product-card"  data-id="3" data-name="Mirchi" data-price="72" data-image="https://wallpaperaccess.com/full/1912934.jpg">
-                    <img src="https://wallpaperaccess.com/full/1912934.jpg" alt="Onion" class="product-image">
-                    <h3>Onion(प्याज)</h3>
+                <div class="product-card" data-id="1" data-name="Onion(Kanda)" data-price="72" data-image="">
+                    <img src="" alt="Onion" class="product-image">
+                    <h3>Onion(Kanda)</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
@@ -56,15 +56,15 @@
                             <option>5Kg</option>
                         </select>
                         <div class="price-add">
-                            <span class="price">₹29</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card"  data-id="2" data-name="Potato" data-price="72" data-image="/images/potato.jpg">
-                    <img src="/images/potato.jpg" alt="Potato" class="product-image">
-                    <h3>Potato(आलू)</h3>
+                <div class="product-card" data-id="2" data-name="Potato" data-price="72" data-image="">
+                    <img src="" alt="Potato" class="product-image">
+                    <h3>Potato</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
@@ -72,15 +72,15 @@
                             <option>5Kg</option>
                         </select>
                         <div class="price-add">
-                            <span class="price">₹19</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-id="3" data-name="Mirchi" data-price="72" data-image="/images/mirchi.jpg">
-                    <img src="/images/mirchi.jpg" alt="Mirchi" class="product-image">
-                    <h3>Mirchi(मिर्ची)</h3>
+                <div class="product-card" data-id="3" data-name="Mirchi" data-price="72" data-image="">
+                    <img src="" alt="Mirchi" class="product-image">
+                    <h3>Mirchi</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
@@ -88,15 +88,15 @@
                             <option>500g</option>
                         </select>
                         <div class="price-add">
-                            <span class="price">₹99</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-id="4" data-name="Tomato" data-price="72" data-image="/images/spinach.jpg">
-                    <img src="/images/spinach.jpg" alt="Tomato" class="product-image">
-                    <h3>Spinach(पालक)</h3>
+                <div class="product-card" data-id="4" data-name="Tomato" data-price="72" data-image="">
+                    <img src="" alt="Tomato" class="product-image">
+                    <h3>Tomato</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
@@ -104,15 +104,15 @@
                             <option>5Kg</option>
                         </select>
                         <div class="price-add">
-                            <span class="price">₹29</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-id="5" data-name="Lemon" data-price="72" data-image="/images/lemon.jpg">
-                    <img src="/images/lemon.jpg" alt="Lemon" class="product-image">
-                    <h3>Lemon(नींबू)</h3>
+                <div class="product-card" data-id="5" data-name="Lemon" data-price="72" data-image="">
+                    <img src="" alt="Lemon" class="product-image">
+                    <h3>Lemon</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
@@ -120,32 +120,32 @@
                             <option>250g</option>
                         </select>
                         <div class="price-add">
-                            <span class="price">₹159</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Row 2 -->
-                <div class="product-card" data-id="6" data-name="Tomato" data-price="72" data-image="/images/tomato.jpg">
-                    <img src="/images/tomato.jpg" alt="Tomato" class="product-image">
-                    <h3>Tomato(टमाटर)</h3>
+                <div class="product-card" data-id="6" data-name="Tomato" data-price="72" data-image="">
+                    <img src="" alt="Tomato" class="product-image">
+                    <h3>Tomato</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
                             <option>2Kg</option>
                             <option>5Kg</option>
-                        </select>   
+                        </select>
                         <div class="price-add">
-                            <span class="price">₹19</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-id="7" data-name="Carrot" data-price="72" data-image="/images/carrot.jpg">
-                    <img src="/images/carrot.jpg" alt="Carrot" class="product-image">
-                    <h3>Carrot(गाजर)</h3>
+                <div class="product-card" data-id="7" data-name="Carrot" data-price="72" data-image="">
+                    <img src="" alt="Carrot" class="product-image">
+                    <h3>Carrot</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
@@ -153,15 +153,15 @@
                             <option>500g</option>
                         </select>
                         <div class="price-add">
-                            <span class="price">₹21</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-id="8" data-name="Cauliflower" data-price="72"  data-image="/images/cauliflower.jpg" >
-                    <img src="/images/cauliflower.jpg" alt="Cauliflower" class="product-image">
-                    <h3>Cauliflower(फूलगोभी)</h3>
+                <div class="product-card" data-id="8" data-name="Cauliflower" data-price="72" data-image="">
+                    <img src="" alt="Cauliflower" class="product-image">
+                    <h3>Cauliflower</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
@@ -169,15 +169,15 @@
                             <option>2 pieces</option>
                         </select>
                         <div class="price-add">
-                            <span class="price">₹33</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-id="9" data-name="Ladyfinger" data-price="72" data-image="/images/ladyfinger.jpg">
-                    <img src="/images/ladyfinger.jpg" alt="Ladyfinger" class="product-image">
-                    <h3>Ladyfinger(भिंडी)</h3>
+                <div class="product-card" data-id="9" data-name="Ladyfinger" data-price="72" data-image="">
+                    <img src="" alt="Ladyfinger" class="product-image">
+                    <h3>Ladyfinger</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
@@ -185,15 +185,15 @@
                             <option>250g</option>
                         </select>
                         <div class="price-add">
-                            <span class="price">₹35</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card" data-id="10" data-name="Cucumber" data-price="72" data-image="/images/kukumber.jpg">
-                    <img src="/images/kukumber.jpg" alt="Cucumber" class="product-image">
-                    <h3>Cucumber(खीरा)</h3>
+                <div class="product-card" data-id="10" data-name="Cucumber" data-price="72" data-image="">
+                    <img src="" alt="Cucumber" class="product-image">
+                    <h3>Cucumber</h3>
                     <div class="product-details">
                         <select class="weight-selector">
                             <option>1Kg</option>
@@ -201,7 +201,7 @@
                             <option>2 pieces</option>
                         </select>
                         <div class="price-add">
-                            <span class="price">₹29</span>
+                            <span class="price">₹72</span>
                             <button class="add-btn">ADD</button>
                         </div>
                     </div>
@@ -222,6 +222,76 @@
             </div>
             <div class="cart-footer">
                 <button class="proceed-btn">Proceed &gt;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Page Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-page">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input type="text" id="searchPageInput" placeholder="Search">
+                    <button class="search-btn" id="searchPageBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="close-search" id="closeSearch">&times;</button>
+            </div>
+            <div class="search-content">
+                <div class="recent-searches">
+                    <h2>Recent Searches</h2>
+                    <div class="search-tags" id="recentSearchTags">
+                        <button class="search-tag">Potato</button>
+                        <button class="search-tag">Onion</button>
+                        <button class="search-tag">Mushroom</button>
+                        <button class="search-tag">Ginger</button>
+                        <button class="search-tag">Capsicum</button>
+                    </div>
+                </div>
+                <div class="advertisement">
+                    <div class="ad-content">AD</div>
+                </div>
+                <div class="search-results" id="searchPageResults">
+                    <!-- Search results will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Overlay -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-container">
+            <div class="login-header">
+                <button class="back-btn" id="backFromLogin">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+            <div class="login-content">
+                <h2 class="login-title">Mandi</h2>
+                <h3 class="login-subtitle">Log in or Sign up</h3>
+                
+                <div id="phoneLoginForm">
+                    <div class="phone-input-container">
+                        <div class="country-code">+91</div>
+                        <input type="text" id="phoneInput" placeholder="Enter Mobile number" maxlength="10">
+                    </div>
+                    <button class="continue-btn" id="continueBtn">Continue</button>
+                    <div class="login-options">
+                        <a href="#" id="switchToCredentials">Login as farmer</a>
+                    </div>
+                </div>
+                
+                <div id="credentialsLoginForm" style="display: none;">
+                    <div class="credentials-container">
+                        <input type="text" id="usernameInput" placeholder="Username" class="credential-input">
+                        <input type="password" id="passwordInput" placeholder="Password" class="credential-input">
+                    </div>
+                    <button class="continue-btn" id="loginWithCredentialsBtn">Login</button>
+                    <div class="login-options">
+                        <a href="#" id="switchToPhone">Login with phone</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
