@@ -1,254 +1,34 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Cart state
-    let cart = [];
-    let cartCount = 0;
-    
-    // DOM Elements
-    const addButtons = document.querySelectorAll('.add-btn');
-    const cartBtn = document.getElementById('cartBtn');
-    const cartOverlay = document.getElementById('cartOverlay');
-    const closeCartBtn = document.getElementById('closeCart');
-    const cartItemsContainer = document.getElementById('cartItems');
-    const cartCountElement = document.getElementById('cartCount');
-    
-    // Add to cart functionality
-    addButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Get product details from data attributes
-            const productCard = this.closest('.product-card');
-            const productId = productCard.dataset.id;
-            const productName = productCard.dataset.name;
-            const productPrice = productCard.dataset.price;
-            const productImage = productCard.dataset.image;
-            const productWeight = productCard.querySelector('.weight-selector').value;
-            
-            // Check if product already in cart
-            const existingItem = cart.find(item => item.id === productId && item.weight === productWeight);
-            
-            if (existingItem) {
-                // Increment quantity if already in cart
-                existingItem.quantity += 1;
-            } else {
-                // Add new item to cart
-                cart.push({
-                    id: productId,
-                    name: productName,
-                    price: productPrice,
-                    image: productImage,
-                    weight: productWeight,
-                    quantity: 1
-                });
-            }
-            
-            // Update cart count
-            updateCartCount();
-            
-            // Update cart display if open
-            if (cartOverlay.classList.contains('active')) {
-                renderCartItems();
-            }
-            
-            // Show notification
-            showNotification(`Added ${productName} (${productWeight}) to cart`);
-            
-            // Animation effect
-            button.textContent = "ADDED";
-            button.style.backgroundColor = "#4caf50";
-            
-            setTimeout(() => {
-                button.textContent = "ADD";
-                button.style.backgroundColor = "#a5d6a7";
-            }, 1000);
-        });
-    });
-    
-    // Open cart overlay
-    cartBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        openCart();
-    });
-    
-    // Close cart overlay
-    closeCartBtn.addEventListener('click', closeCart);
-    
-    // Close cart when clicking outside
-    cartOverlay.addEventListener('click', function(e) {
-        if (e.target === cartOverlay) {
-            closeCart();
-        }
-    });
-    
-    // Function to open cart
-    function openCart() {
-        cartOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-        renderCartItems();
-    }
-    
-    // Function to close cart
-    function closeCart() {
-        cartOverlay.classList.remove('active');
-        document.body.style.overflow = ''; // Re-enable scrolling
-    }
-    
-    // Function to render cart items
-    function renderCartItems() {
-        cartItemsContainer.innerHTML = '';
-        
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
-            return;
-        }
-        
-        cart.forEach(item => {
-            const cartItemElement = document.createElement('div');
-            cartItemElement.className = 'cart-item';
-            
-            cartItemElement.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+document.addEventListener("DOMContentLoaded",function(){let e=[],t=0,i=!1,a=null,n=null,o=["Potato","Onion","Mushroom","Ginger","Capsicum"],c={"Fresh Vegetables":[{id:1,name:"Onion(Kanda)",price:72,image:"",weight:"1Kg"},{id:2,name:"Potato",price:72,image:"",weight:"1Kg"},{id:3,name:"Mirchi",price:72,image:"",weight:"1Kg"},{id:4,name:"Tomato",price:72,image:"",weight:"1Kg"},{id:5,name:"Lemon",price:72,image:"",weight:"1Kg"},{id:6,name:"Carrot",price:72,image:"",weight:"1Kg"},{id:7,name:"Cauliflower",price:72,image:"",weight:"1Kg"},{id:8,name:"Ladyfinger",price:72,image:"",weight:"1Kg"},{id:9,name:"Cucumber",price:72,image:"",weight:"1Kg"},{id:10,name:"Capsicum",price:85,image:"",weight:"1Kg"}],"Fresh Fruits":[{id:11,name:"Chikoo",price:72,image:"",weight:"1Kg"},{id:12,name:"Sweet Lime",price:72,image:"",weight:"1Kg"},{id:13,name:"Groundnut",price:72,image:"",weight:"1Kg"},{id:14,name:"Tamarind",price:72,image:"",weight:"1Kg"},{id:15,name:"Wood Apple",price:72,image:"",weight:"1Kg"},{id:16,name:"Kiwi",price:120,image:"",weight:"1Kg"},{id:17,name:"Spinach",price:40,image:"",weight:"1Kg"},{id:18,name:"Dragon Fruit",price:150,image:"",weight:"1Kg"},{id:19,name:"Grapes",price:90,image:"",weight:"1Kg"},{id:20,name:"Berries",price:180,image:"",weight:"1Kg"}],"Mangoes & Melons":[{id:21,name:"Alphonso Mango",price:250,image:"",weight:"1Kg"},{id:22,name:"Kesar Mango",price:200,image:"",weight:"1Kg"},{id:23,name:"Watermelon",price:50,image:"",weight:"1Kg"},{id:24,name:"Muskmelon",price:60,image:"",weight:"1Kg"},{id:25,name:"Honeydew Melon",price:80,image:"",weight:"1Kg"}],Seasonal:[{id:26,name:"Strawberry",price:180,image:"",weight:"1Kg"},{id:27,name:"Litchi",price:150,image:"",weight:"1Kg"},{id:28,name:"Jamun",price:120,image:"",weight:"1Kg"},{id:29,name:"Plum",price:160,image:"",weight:"1Kg"},{id:30,name:"Peach",price:200,image:"",weight:"1Kg"}],Exotics:[{id:31,name:"Avocado",price:250,image:"",weight:"1Kg"},{id:32,name:"Blueberry",price:300,image:"",weight:"1Kg"},{id:33,name:"Passion Fruit",price:220,image:"",weight:"1Kg"},{id:34,name:"Rambutan",price:280,image:"",weight:"1Kg"},{id:35,name:"Star Fruit",price:190,image:"",weight:"1Kg"}],"Freshly Cut & Sprouts":[{id:36,name:"Cut Pineapple",price:100,image:"",weight:"500g"},{id:37,name:"Cut Watermelon",price:80,image:"",weight:"500g"},{id:38,name:"Mixed Sprouts",price:60,image:"",weight:"200g"},{id:39,name:"Moong Sprouts",price:50,image:"",weight:"200g"},{id:40,name:"Fruit Salad Mix",price:120,image:"",weight:"300g"}],"Frozen Veg":[{id:41,name:"Frozen Peas",price:90,image:"",weight:"500g"},{id:42,name:"Frozen Corn",price:85,image:"",weight:"500g"},{id:43,name:"Frozen Mixed Veg",price:95,image:"",weight:"500g"},{id:44,name:"Frozen Spinach",price:70,image:"",weight:"500g"},{id:45,name:"Frozen Berries",price:180,image:"",weight:"500g"}],"Leafies & Herbs":[{id:46,name:"Spinach",price:40,image:"",weight:"1 bunch"},{id:47,name:"Coriander",price:20,image:"",weight:"1 bunch"},{id:48,name:"Mint",price:20,image:"",weight:"1 bunch"},{id:49,name:"Fenugreek",price:30,image:"",weight:"1 bunch"},{id:50,name:"Basil",price:40,image:"",weight:"1 bunch"}]},l="Fresh Vegetables",s=document.querySelector(".products-grid"),r=document.querySelector(".content h1");document.querySelectorAll(".add-btn");let d=document.getElementById("cartBtn"),g=document.getElementById("cartOverlay"),h=document.getElementById("closeCart"),p=document.getElementById("cartItems"),b=document.getElementById("cartCount"),u=document.getElementById("searchInput"),m=document.getElementById("searchOverlay"),_=document.getElementById("closeSearch"),$=document.getElementById("searchPageInput"),k=document.getElementById("searchPageBtn"),y=document.getElementById("searchPageResults"),B=document.getElementById("recentSearchTags"),v=document.getElementById("loginBtn"),f=document.getElementById("loginOverlay"),w=document.getElementById("backFromLogin"),E=document.getElementById("phoneInput"),U=document.getElementById("continueBtn"),V=document.getElementById("switchToCredentials"),W=document.getElementById("switchToPhone"),K=document.getElementById("phoneLoginForm"),I=document.getElementById("credentialsLoginForm"),x=document.getElementById("usernameInput"),L=document.getElementById("passwordInput"),P=document.getElementById("loginWithCredentialsBtn");F(l),d.addEventListener("click",function(e){e.preventDefault(),g.classList.add("active"),document.body.style.overflow="hidden",Y()}),h.addEventListener("click",H),g.addEventListener("click",function(e){e.target===g&&H()}),u.addEventListener("click",function(){m.classList.add("active"),document.body.style.overflow="hidden",$.focus()}),_.addEventListener("click",function e(){m.classList.remove("active"),document.body.style.overflow=""}),k.addEventListener("click",A),$.addEventListener("keypress",function(e){"Enter"===e.key&&A()}),v.addEventListener("click",function(e){e.preventDefault(),f.classList.add("active"),document.body.style.overflow="hidden",E.value="",x.value="",L.value="",U.classList.remove("active"),K.style.display="block",I.style.display="none"}),w.addEventListener("click",C),f.addEventListener("click",function(e){e.target===f&&C()}),V.addEventListener("click",function(e){e.preventDefault(),K.style.display="none",I.style.display="block"}),W.addEventListener("click",function(e){e.preventDefault(),I.style.display="none",K.style.display="block"}),E.addEventListener("input",function(){this.value=this.value.replace(/[^0-9]/g,""),10===this.value.length?U.classList.add("active"):U.classList.remove("active")}),U.addEventListener("click",function(){10===E.value.length&&(T("OTP sent to your mobile number"),M("User"))}),P.addEventListener("click",function(){let e=x.value.trim(),t=L.value.trim();"admin"===e&&"admin"===t?M("Admin"):T("Invalid credentials",!0)}),j();let D=document.querySelectorAll(".categories li");D.forEach(e=>{e.addEventListener("click",function(e){e.preventDefault(),D.forEach(e=>e.classList.remove("active")),this.classList.add("active");let t=this.textContent.trim();l=t,r.textContent=`Buy ${t} Online`,F(t)})});let N=document.querySelector(".location-selector");function F(t){s.innerHTML="";let i=c[t]||[];i.forEach(e=>{let t=document.createElement("div");t.className="product-card",t.dataset.id=e.id,t.dataset.name=e.name,t.dataset.price=e.price,t.dataset.image=e.image,t.innerHTML=`
+                <img src="${e.image}" alt="${e.name}" class="product-image">
+                <h3>${e.name}</h3>
+                <div class="product-details">
+                    <select class="weight-selector">
+                        <option>${e.weight}</option>
+                        <option>${"1Kg"===e.weight?"500g":"1Kg"}</option>
+                        <option>${"1Kg"===e.weight?"2Kg":"250g"}</option>
+                    </select>
+                    <div class="price-add">
+                        <span class="price">₹${e.price}</span>
+                        <button class="add-btn">ADD</button>
+                    </div>
+                </div>
+            `,s.appendChild(t)}),function t(){let i=document.querySelectorAll(".add-btn");i.forEach(t=>{t.addEventListener("click",function(){let i=this.closest(".product-card"),a=i.dataset.id,n=i.dataset.name,o=i.dataset.price,c=i.dataset.image,l=i.querySelector(".weight-selector").value,s=e.find(e=>e.id===a&&e.weight===l);s?s.quantity+=1:e.push({id:a,name:n,price:o,image:c,weight:l,quantity:1}),S(),g.classList.contains("active")&&Y(),T(`Added ${n} (${l}) to cart`),t.textContent="ADDED",t.style.backgroundColor="#4caf50",setTimeout(()=>{t.textContent="ADD",t.style.backgroundColor="#a5d6a7"},1e3)})})}()}function q(){let e=prompt("Enter your location (city/area):");e&&""!==e.trim()&&(N.innerHTML=e+' <i class="fas fa-chevron-down"></i>',T(`Location set to ${e}`))}function H(){g.classList.remove("active"),document.body.style.overflow=""}function C(){f.classList.remove("active"),document.body.style.overflow=""}function M(e){i=!0,a=e,C(),v.textContent=e,T(`Welcome, ${e}!`)}function Y(){if(p.innerHTML="",0===e.length){p.innerHTML='<p class="empty-cart">Your cart is empty</p>';return}e.forEach(e=>{let t=document.createElement("div");t.className="cart-item",t.innerHTML=`
+                <img src="${e.image}" alt="${e.name}" class="cart-item-image">
                 <div class="cart-item-details">
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-weight">${item.weight}</div>
-                    <div class="cart-item-price">${item.quantity > 1 ? item.quantity + ' × ' : ''}₹${item.price}</div>
+                    <div class="cart-item-name">${e.name}</div>
+                    <div class="cart-item-weight">${e.weight}</div>
+                    <div class="cart-item-price">${e.quantity>1?e.quantity+" \xd7 ":""}₹${e.price}</div>
                 </div>
                 <div class="cart-item-quantity">
-                    <button class="quantity-btn minus" data-id="${item.id}" data-weight="${item.weight}">-</button>
-                    <span class="quantity-value">${item.quantity}</span>
-                    <button class="quantity-btn" data-id="${item.id}" data-weight="${item.weight}">+</button>
+                    <button class="quantity-btn minus" data-id="${e.id}" data-weight="${e.weight}">-</button>
+                    <span class="quantity-value">${e.quantity}</span>
+                    <button class="quantity-btn" data-id="${e.id}" data-weight="${e.weight}">+</button>
                 </div>
-            `;
-            
-            cartItemsContainer.appendChild(cartItemElement);
-        });
-        
-        // Add event listeners to quantity buttons
-        document.querySelectorAll('.quantity-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = this.dataset.id;
-                const weight = this.dataset.weight;
-                const isDecrease = this.classList.contains('minus');
-                
-                updateItemQuantity(id, weight, isDecrease);
-            });
-        });
-    }
-    
-    // Function to update item quantity
-    function updateItemQuantity(id, weight, isDecrease) {
-        const itemIndex = cart.findIndex(item => item.id === id && item.weight === weight);
-        
-        if (itemIndex === -1) return;
-        
-        if (isDecrease) {
-            // Decrease quantity
-            if (cart[itemIndex].quantity > 1) {
-                cart[itemIndex].quantity -= 1;
-            } else {
-                // Remove item if quantity becomes 0
-                cart.splice(itemIndex, 1);
-            }
-        } else {
-            // Increase quantity
-            cart[itemIndex].quantity += 1;
-        }
-        
-        // Update cart count and display
-        updateCartCount();
-        renderCartItems();
-    }
-    
-    // Function to update cart count
-    function updateCartCount() {
-        cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-        cartCountElement.textContent = cartCount;
-    }
-    
-    // Function to show notification
-    function showNotification(message) {
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
-        
-        // Style the notification
-        Object.assign(notification.style, {
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            backgroundColor: '#4caf50',
-            color: 'white',
-            padding: '10px 20px',
-            borderRadius: '4px',
-            boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-            zIndex: '1000',
-            opacity: '0',
-            transition: 'opacity 0.3s ease'
-        });
-        
-        // Add to document
-        document.body.appendChild(notification);
-        
-        // Show notification
-        setTimeout(() => {
-            notification.style.opacity = '1';
-        }, 10);
-        
-        // Hide and remove notification after 3 seconds
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 300);
-        }, 3000);
-    }
-    
-    // Category selection
-    const categoryItems = document.querySelectorAll('.categories li');
-    
-    categoryItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Remove active class from all items
-            categoryItems.forEach(cat => cat.classList.remove('active'));
-            
-            // Add active class to clicked item
-            this.classList.add('active');
-            
-            // Update page title
-            const categoryName = this.textContent.trim();
-            document.querySelector('.content h1').textContent = `Buy ${categoryName} Online`;
-        });
-    });
-    
-    // Location selector
-    const locationSelector = document.querySelector('.location-selector');
-    
-    locationSelector.addEventListener('click', function() {
-        // In a real app, this would open a location selection modal
-        alert('Location selection would open here');
-    });
-    
-    // Search functionality
-    const searchInput = document.querySelector('.search-container input');
-    const searchBtn = document.querySelector('.search-btn');
-    
-    searchBtn.addEventListener('click', performSearch);
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            performSearch();
-        }
-    });
-    
-    function performSearch() {
-        const searchTerm = searchInput.value.trim().toLowerCase();
-        
-        if (searchTerm === '') return;
-        
-        // In a real app, this would filter products based on search term
-        alert(`Searching for: ${searchTerm}`);
-        
-        // Reset search input
-        searchInput.value = '';
-    }
-});
+            `,p.appendChild(t)}),document.querySelectorAll(".quantity-btn").forEach(t=>{t.addEventListener("click",function(){let t=this.dataset.id,i=this.dataset.weight,a=this.classList.contains("minus");(function t(i,a,n){let o=e.findIndex(e=>e.id===i&&e.weight===a);-1!==o&&(n?e[o].quantity>1?e[o].quantity-=1:e.splice(o,1):e[o].quantity+=1,S(),Y())})(t,i,a)})})}function S(){t=e.reduce((e,t)=>e+t.quantity,0),b.textContent=t}function j(){B.innerHTML="",o.forEach(e=>{let t=document.createElement("button");t.className="search-tag",t.textContent=e,t.addEventListener("click",function(){$.value=e,A()}),B.appendChild(t)})}function A(){let t=$.value.trim().toLowerCase();if(""===t)return;o.includes(t)||(o.unshift(t),o=o.slice(0,5),j());let i=Object.values(c).flat(),a=i.filter(e=>e.name.toLowerCase().includes(t));!function t(i){if(y.innerHTML="",0===i.length){y.innerHTML='<p class="no-results">No products found matching your search.</p>';return}i.forEach(e=>{let t=document.createElement("div");t.className="search-result-item",t.innerHTML=`
+                <img src="${e.image}" alt="${e.name}" class="search-result-image">
+                <div class="search-result-details">
+                    <div class="search-result-name">${e.name}</div>
+                    <div class="search-result-price">₹${e.price}/${e.weight}</div>
+                </div>
+                <button class="search-result-add" data-id="${e.id}">ADD</button>
+            `,y.appendChild(t)}),document.querySelectorAll(".search-result-add").forEach(t=>{t.addEventListener("click",function(){let t=this.dataset.id,i=Object.values(c).flat(),a=i.find(e=>e.id==t);if(!a)return;let n=e.find(e=>e.id===t&&e.weight===a.weight);n?n.quantity+=1:e.push({id:t,name:a.name,price:a.price,image:a.image,weight:a.weight,quantity:1}),S(),T(`Added ${a.name} (${a.weight}) to cart`),this.textContent="ADDED",this.style.backgroundColor="#4caf50",setTimeout(()=>{this.textContent="ADD",this.style.backgroundColor="#a5d6a7"},1e3)})})}(a)}function T(e,t=!1){let i=document.createElement("div");i.className="notification",i.textContent=e,Object.assign(i.style,{position:"fixed",bottom:"20px",right:"20px",backgroundColor:t?"#f44336":"#4caf50",color:"white",padding:"10px 20px",borderRadius:"4px",boxShadow:"0 2px 5px rgba(0,0,0,0.2)",zIndex:"1000",opacity:"0",transition:"opacity 0.3s ease"}),document.body.appendChild(i),setTimeout(()=>{i.style.opacity="1"},10),setTimeout(()=>{i.style.opacity="0",setTimeout(()=>{document.body.removeChild(i)},300)},3e3)}N.addEventListener("click",function(){navigator.geolocation?navigator.geolocation.getCurrentPosition(function(e){n={latitude:e.coords.latitude,longitude:e.coords.longitude},T("Location access granted. Using your current location."),N.innerHTML='Current Location <i class="fas fa-chevron-down"></i>'},function(e){let t;switch(e.code){case e.PERMISSION_DENIED:t="Location permission denied";break;case e.POSITION_UNAVAILABLE:t="Location information unavailable";break;case e.TIMEOUT:t="Location request timed out";break;default:t="Unknown error occurred"}T(t,!0),q()}):(T("Geolocation is not supported by your browser",!0),q())})});
